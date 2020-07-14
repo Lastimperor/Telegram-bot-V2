@@ -7,15 +7,35 @@ const axios = require('axios');
 1- Get Ether Balance for a single Address
 https://api.etherscan.io/api?module=account&action=balance&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&tag=latest&apikey=YourApiKeyToken
 
-2 - Get a list of 'Internal' Transactions by Address
+etherscan.getEtherBalance({
+    address: '0x00',
+    tag: 'latest' // Optional, default 'latest'
+});
+
+2 - Get a list of 'Normal' Transactions By Address
+[Optional Parameters] startblock: starting blockNo to retrieve results, endblock: ending blockNo to retrieve results
+
+http://api.etherscan.io/api?module=account&action=txlist&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken
+
+etherscan.getTxList({
+    address: '0x00',
+    startblock: 0, // Optional
+    endblock: 0, // Optional
+    sort: 'desc' // Optional, default 'asc'
+});
+
+3 - Get a list of 'Internal' Transactions by Address
 [Optional Parameters] startblock: starting blockNo to retrieve results, endblock: ending blockNo to retrieve results
 
 http://api.etherscan.io/api?module=account&action=txlistinternal&address=0x2c1ba59d6f58433fb1eaee7d20b26ed83bda51a3&startblock=0&endblock=2702578&sort=asc&apikey=YourApiKeyToken
 
-3 - Get a list of 'Normal' Transactions By Address
-[Optional Parameters] startblock: starting blockNo to retrieve results, endblock: ending blockNo to retrieve results
+etherscan.getTxListInternal({
+    address: '0x00',
+    startblock: 0, // Optional
+    endblock: 0, // Optional
+    sort: 'desc' // Optional, default 'asc'
+});
 
-http://api.etherscan.io/api?module=account&action=txlist&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken
 
 4 - Get "Internal Transactions" by Transaction Hash
 https://api.etherscan.io/api?module=account&action=txlistinternal&txhash=0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170&apikey=YourApiKeyToken
